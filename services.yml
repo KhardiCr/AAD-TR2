@@ -1,0 +1,17 @@
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.30
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_USER: cristian_ramos
+      MYSQL_PASSWORD: 12345
+      MYSQL_DATABASE: aad_tr2
+    ports:
+      - 3306:3306
+    networks:
+      - external
+
+networks:
+  external:
+    driver: bridge

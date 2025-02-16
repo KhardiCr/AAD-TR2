@@ -1,0 +1,120 @@
+{
+    "Ligas": [
+        {
+            "nombre_liga": "Liga Nacional",
+            "fecha_inicio": "2025-03-01",
+            "fecha_fin": "2025-11-30"
+        }
+    ],
+    "Equipos": [
+        {
+            "nombre_equipo": "Tigres FC",
+            "ciudad": "Ciudad A",
+            "liga":  {
+                "id": 1
+            }
+        },
+        {
+            "nombre_equipo": "Águilas FC",
+            "ciudad": "Ciudad B",
+            "liga":  {
+                "id": 1
+            }
+        },
+        {
+            "nombre_equipo": "Leones FC",
+            "ciudad": "Ciudad C",
+            "liga":  {
+                "id": 1
+            }
+        }
+    ],
+    "Jugadores": [
+        {
+            "nombre": "Juan Pérez",
+            "posicion": "Delantero",
+            "valor_mercado": 2896571,
+            "goles": 26,
+            "nacionalidad": "Alemania",
+            "equipo":  {
+                "id": 1
+            }
+        },
+        {
+            "nombre": "Luis García",
+            "posicion": "Portero",
+            "valor_mercado": 2898790,
+            "goles": 17,
+            "nacionalidad": "Brasil",
+            "equipo":  {
+                "id": 1
+            }
+        },
+        {
+            "nombre": "Carlos Sánchez",
+            "posicion": "Delantero",
+            "valor_mercado": 3951958,
+            "goles": 21,
+            "nacionalidad": "Alemania",
+            "equipo":  {
+                "id": 2
+            }
+        },
+        {
+            "nombre": "Pedro Ramírez",
+            "posicion": "Delantero",
+            "valor_mercado": 1704376,
+            "goles": 1,
+            "nacionalidad": "Argentina",
+            "equipo":  {
+                "id": 2
+            }
+        },
+        {
+            "nombre": "Andrés Gómez",
+            "posicion": "Portero",
+            "valor_mercado": 1362797,
+            "goles": 15,
+            "nacionalidad": "Francia",
+            "equipo":  {
+                "id": 3
+            }
+        },
+        {
+            "nombre": "Manuel Torres",
+            "posicion": "Portero",
+            "valor_mercado": 3961513,
+            "goles": 25,
+            "nacionalidad": "Francia",
+            "equipo":  {
+                "id": 3
+            }
+        }
+    ],
+    "Entrenadores": [
+        {
+            "nombre": "José Martínez",
+            "calificacion": 9,
+            "titulos": 5,
+            "equipo": {
+                "id": 1
+            }
+        },
+        {
+            "nombre": "Miguel Herrera",
+            "calificacion": 6,
+            "titulos": 3,
+            "equipo": {
+                "id": 2
+            }
+        },
+        {
+            "nombre": "Pablo López",
+            "calificacion": 6,
+            "titulos": 4,
+            "equipo": {
+                "id": 3
+            }
+        }
+    ]
+}

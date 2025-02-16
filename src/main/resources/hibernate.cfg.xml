@@ -1,0 +1,16 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/aad_tr2</property>
+        <property name="hibernate.connection.username">cristian_ramos</property>
+        <property name="hibernate.connection.password">12345</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <mapping class="ligas.Liga"/>
+        <mapping class="equipos.Equipo"/>
+        <mapping class="jugadores.Jugador"/>
+        <mapping class="entrenadores.Entrenador"/>
+
+    </session-factory>
+</hibernate-configuration>
