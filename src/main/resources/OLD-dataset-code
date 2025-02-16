@@ -1,0 +1,73 @@
+try {
+
+            ligaDao.listLiga(1);
+        } catch (NullPointerException e) {
+            System.out.println("La db se va a seedear");
+            /*
+            Al pasarle una uri al objeto dataset, hay problemas al escapar '/', de ahí el uso de paths.get()
+            https://medium.com/@AlexanderObregon/javas-paths-get-method-explained-9586c13f2c5c
+
+            Esto se ha resuelto de otra forma al crear un inputStreamReader en JsonReader, y dejar que sea este
+            quién busque el recurso en el classpath recibiendo únicamente el nombre del .json
+
+            Preparamos el dataset.json
+            */
+            DataSet dataset = JsonReader.loadJson("dataset.json");
+
+
+            /*
+            SessionFactory
+            Control de session
+            beginTransaction
+            accion --> crud
+            commit
+
+            Si uso getCurrent, cuando hago commit, cierro la sesion.
+            Session session = sessionFactory.getCurrentSession();
+
+            En cambio, con openSession dentro de un try, logro persistirla entre commits.
+            Los objetos tienen otros objetos como atributos por que el dataset.json define un objeto N con id Y
+            Esto facilita la generación de relaciones con hibernate.
+
+            Esta parte realiza:
+            - Crea 1 liga
+            - Crea 3 equipos y asócialos a la liga
+            - Crea 6 jugadores y asócialos a los equipos
+            */
+            if(dataset != null) {
+                try {
+                    Session session = new HibernateUtils().getSessionFactory().getCurrentSession();
+                    //Primero insertamos la liga que no tiene dependencias
+                    if (!session.getTransaction().isActive()) {
+                        session.beginTransaction();
+                    }
+                    for (Liga liga : dataset.getLigas()) {
+                        session.persist(liga);
+                    }
+                    session.getTransaction().commit();
+
+                    session.beginTransaction();
+                    //Luego insertamos equipos, por que el equipo debe jugar en una liga existente
+                    for (Equipo equipo : dataset.getEquipos()) {
+                        session.merge(equipo);
+                    }
+                    session.getTransaction().commit();
+
+                    session.beginTransaction();
+                    // Tanto entrenadores como Jugadores necesitan un equipo que exista.
+                    for (Entrenador entrenador : dataset.getEntrenadores()) {
+                        session.merge(entrenador);
+                    }
+                    session.getTransaction().commit();
+
+                    session.beginTransaction();
+                    for (Jugador jugador : dataset.getJugadores()) {
+                        session.merge(jugador);
+                    }
+                    session.getTransaction().commit();
+                    //session.close();
+                }finally {
+                    System.out.println("db seedeada");
+                }
+            }
+        }

@@ -9,6 +9,8 @@ import lombok.Setter;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Max;
 
+import java.io.Serializable;
+
 
 @Entity
 @Table(name = "entrenadores")
@@ -16,7 +18,7 @@ import jakarta.validation.constraints.Max;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Entrenador {
+public class Entrenador implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +38,16 @@ public class Entrenador {
     @JoinColumn(name = "id_equipo", unique = true, nullable = false)
     private Equipo equipo;
 
-    public Entrenador(String nombre, int calificacion, int titulos) {
+    public Entrenador(String nombre, int calificacion, int titulos, Equipo equipo) {
         this.nombre = nombre;
         this.calificacion = calificacion;
         this.titulos = titulos;
+        this.equipo = equipo;
+    }
+
+    @Override
+    public String toString() {
+        return "Este entrenador tiene el id: " + id + ", se llama "+ nombre +
+                ", y pertenece al equipo "+ equipo;
     }
 }
