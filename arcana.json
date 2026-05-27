@@ -1,0 +1,12 @@
+{
+  "name": "AAD-TR2",
+  "template_source": "laravel-api",
+  "images": [
+    {
+      "name": "web",
+      "dockerfile": "docker/dockerfiles/dockerfile",
+      "default_image": "myproject/payment-service",
+      "enabled": false
+    }
+  ]
+}
