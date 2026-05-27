@@ -8,4 +8,5 @@ jobs:
   registry-release:
     uses: KhardiCr/github-workflows/.github/workflows/registry-release.yml@main
     with:
+      image-name: "myproject/payment-service"
     secrets: inherit
